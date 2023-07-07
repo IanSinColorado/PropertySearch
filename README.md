@@ -30,6 +30,8 @@ Creating the Conda Environment:
 
 ### Using the Tool:
 
+**Note:** Before using the tool, you will need to update `propertySearch.py` to include your own Datafinity API key. A new API key can be obtained by creating an account on [Datafinity's website](https://www.datafiniti.co/).  
+  
 When the python script is run, the user will be given a choice between using the interactive menu to create their own search or to use the current hardcoded query that is already present in the code.
 
 Steps to Run:  
