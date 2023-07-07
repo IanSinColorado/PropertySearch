@@ -1,6 +1,6 @@
-# Python Tool to Search for Properties with the Datafinity API
+# Python Tool to Search for Property Listings with the Datafinity API
 
-This software tool is a property search engine that uses the [Datafinity API](https://developer.datafiniti.co/docs/get-started) more specifically the property data. This tool allows the user to search for properties from Datafinity's API and returns a list of properties and their name, address, date of most recent update, city, and max price.
+This software tool is a property search engine that uses the [Datafinity API](https://developer.datafiniti.co/docs/get-started) more specifically the property data. This tool allows the user to search for properties with a variety of search criteria from Datafinity's API including country, cities, property status, province, max price, and number of search results to return. The program will then use the python requests library to query the API and print a list of properties with information including their name, address, date of most recent listing update, city, and max price.
 
 
 ## Requirements
@@ -14,8 +14,7 @@ This software tool is a property search engine that uses the [Datafinity API](ht
 ## Usage
 ### Conda Environment Setup
 
-This section will serve as a guide to set up the proper conda environment with the required libraries.
-
+Creating the Conda Environment:
 1. Clone this repository into a directory of your choosing
 2. Verify you have [conda installed](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html): open a terminal and run `conda --version`. If a version number is returned, you have conda or miniconda installed.
 3. Path to where you cloned the repository in the terminal of your choosing
@@ -31,8 +30,9 @@ This section will serve as a guide to set up the proper conda environment with t
 
 ### Using the Tool:
 
-This tool is made to run on the command line. The user has the option of using the interactive menu and be given the option to give specific search criteria including country, cities, property status, province (or state such as Colorado), max price, and number of search results to return. The user can also choose to use the current query, hardcoded in propertySearch.py
+When the python script is run, the user will be given a choice between using the interactive menu to create their own search or to use the current hardcoded query that is already present in the code.
 
+Steps to Run:  
 1. Open a terminal
 2. Verify you have [python installed](https://www.python.org/downloads/): run `python --version`. If a version number is returned, you have python installed.
 3. Path to where this repository is cloned
