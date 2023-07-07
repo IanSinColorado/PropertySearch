@@ -33,11 +33,13 @@ if menuFlag == True:
     # Getting country
     countryFlag = True
     countryInput = input("Enter the abbreviated country name (like US) or 'None'. ")
-    print()
+
     if countryInput == 'None':
         countryFlag = False
     else:
         query += 'country:' + countryInput
+
+    print()
 
     # Getting cities
     cityFlag = True
@@ -75,11 +77,13 @@ if menuFlag == True:
         else:
             print("No Cities")
 
-    # Getting most recent statuses
+    print()
+
+    # Getting most recent status
     statusFlag = True
     whileFlag = True
     
-    statusInput = input("What status to search? 'Rental', 'For Sale', 'Off Market', 'Pending', 'Rent To Own', 'Rental', 'Short Term Rental', 'Sold', or 'None' ")
+    statusInput = input("What status to search? 'Rental', 'For Sale', 'Off Market', 'Pending', 'Rent To Own', 'Rental', 'Short Term Rental', 'Sold', or 'None'. ")
     while whileFlag:
         # Ensure the input is one of the search options, otherwise reprompt for it
         if statusInput == 'None':
@@ -88,7 +92,9 @@ if menuFlag == True:
         elif statusInput in ['Rental', 'For Sale', 'Off Market', 'Pending', 'Rent To Own', 'Rental', 'Short Term Rental', 'Sold']:
             whileFlag = False
         else:
-            input("Please enter one of the following inputs: 'Rental', 'For Sale', 'Off Market', 'Pending', 'Rent To Own', 'Rental', 'Short Term Rental', 'Sold', or 'None' ")
+            input("Please enter one of the following inputs: 'Rental', 'For Sale', 'Off Market', 'Pending', 'Rent To Own', 'Rental', 'Short Term Rental', 'Sold', or 'None'. ")
+
+    print()
 
     if statusFlag:
         # Check if there were any previous search conditions
@@ -99,7 +105,7 @@ if menuFlag == True:
 
     # Getting province (or State)
     provinceFlag = True
-    provinceInput = input("Enter the abbreviated country name (like CO for Colorado) or 'None' ")
+    provinceInput = input("Enter the abbreviated country name (like CO for Colorado) or 'None'. ")
 
     if provinceInput == 'None':
         provinceFlag = False
@@ -111,9 +117,11 @@ if menuFlag == True:
 
         query += 'province:' + provinceInput
 
-    # Price max 
+    print()
+
+    # Getting price max 
     priceFlag = True
-    priceInput = input("Enter the max price you wish to search for or 'None' ")
+    priceInput = input("Enter the max price you wish to search for or 'None'. ")
 
     if priceInput == 'None':
         priceFlag = False
@@ -128,6 +136,7 @@ if menuFlag == True:
             print("Not a number, entering >1")
             query += '{ prices.maxAmount:>1 }'
 
+    print()
 
     # Ask how many properties to search for
     searchNumInput = input("How many properties would you like to search? (Enter a number) ")
@@ -154,7 +163,6 @@ request_data = {
     'download': download
 }
 
-'''
 # Make the API call.
 r = requests.post('https://api.datafiniti.co/v4/properties/search',json=request_data,headers=request_headers)
 
@@ -167,23 +175,18 @@ prices = list()
 
 # Check response before extracting data, with try and except for potential errors
 if r.status_code == 200:
-    # print(r.content)
-    # print(type(r))
     try:
-        # print(r.json())
         try:
             records = r.json()["records"]
             for record in records:
                 keys = list(record.keys())
 
                 if 'address' in keys:
-                    # print(record["address"])
                     addresses.append(record["address"])
                 else:
                     addresses.append(None)
 
                 if 'listingName' in keys:
-                    # print(record["listingName"])
                     listingNames.append(record["listingName"])
                 else:
                     listingNames.append(None)
@@ -199,17 +202,10 @@ if r.status_code == 200:
                     cities.apped(None)
 
                 try:
-<<<<<<< HEAD
                    prices.append(record["prices"][0]["amountMax"])
                 except:
-                        prices.append(None)
-=======
-                    prices.append(record["prices"][0]["amountMax"])
-                except:
+                    print("No max price")
                     prices.append(None)
-
-
->>>>>>> 18b8a3e... updated so that it prints nicely with the name, address, city, price,
         except:
             print("Could not read records")
     except:
@@ -217,7 +213,7 @@ if r.status_code == 200:
 else:
     print('Request failed')
 
-<<<<<<< HEAD
+
 # Make the dates human readable
 humanDates = list()
 for date in datesUpdated:
@@ -229,17 +225,6 @@ print()
 # Print properties
 for i, address in enumerate(addresses):
     print('*****************************************************************')
-=======
-print()
-
-humanDates = list()
-for date in datesUpdated:
-    humanDate = date[5:7] + "/" + date[8:10] + "/" + date[:4]
-    humanDates.append(humanDate) 
-
-# Print properties
-for i, address in enumerate(addresses):
->>>>>>> 18b8a3e... updated so that it prints nicely with the name, address, city, price,
     try:
         print("Name: " + listingNames[i])
     except:
@@ -250,10 +235,6 @@ for i, address in enumerate(addresses):
     except:
         print("Address: None")
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 18b8a3e... updated so that it prints nicely with the name, address, city, price,
     try:
         print("City: " + cities[i])
     except:
@@ -269,10 +250,4 @@ for i, address in enumerate(addresses):
     except:
         print("Most Recent Update: None")
 
-<<<<<<< HEAD
     print('*****************************************************************')
-=======
-    print('***************')
->>>>>>> 18b8a3e... updated so that it prints nicely with the name, address, city, price,
-    print()
-'''
