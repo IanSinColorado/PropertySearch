@@ -1,4 +1,4 @@
-# Python Tool to Search for Property Listings with the Datafinity API
+# Python Property Search Tool
 
 This software tool is a property search engine that uses the [Datafinity API](https://developer.datafiniti.co/docs/get-started) more specifically the property data. This tool allows the user to search for properties with a variety of search criteria from Datafinity's API including country, cities, property status, province, max price, and number of search results to return. The program will then use the python requests library to query the API and print a list of properties with information including their name, address, date of most recent listing update, city, and max price.
 
